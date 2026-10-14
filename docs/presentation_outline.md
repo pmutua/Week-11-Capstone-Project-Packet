@@ -41,9 +41,9 @@
    (`model_id: stub-local-router-v1`), not merely a capped demo budget.
 
 9. **What works vs deferred**: `docs/build_checkpoint.md` -- the full
-   MWP runs in stub mode end to end; deferred items are the Week 10
-   catalog-mismatch lane, any live model wiring, and real CI/cloud
-   execution of the illustrative `ci.yml`.
+   MWP runs in stub mode end to end, and `ci.yml` is real, green CI on
+   this repo's own GitHub Actions; deferred items are the Week 10
+   catalog-mismatch lane, any live model wiring, and any cloud deploy.
 
 10. **Process**: one feature branch (`feature/week11-capstone-setup`),
     conventional commits per lesson day, a solo self-review against

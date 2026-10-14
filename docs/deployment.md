@@ -20,7 +20,10 @@ itself, so this works from either location in practice).
 `prompt_sha256` from `services/triage/prompts/pin.json`.
 
 ## Fallback
-No cloud deploy, no Docker, and no CI runner have actually executed this
-build. `module4-capstone/.github/workflows/ci.yml` is illustrative only
-(see `docs/build_checkpoint.md`); everything in this doc pack was run on
-a laptop, commands transcribed as they were actually executed.
+No cloud deploy and no Docker have executed this build. CI is real,
+though: `.github/workflows/ci.yml` runs on every push and pull request
+against this repo's own GitHub Actions
+(github.com/pmutua/Week-11-Capstone-Project-Packet/actions), and is
+green as of the last commit to `main` -- see the badge at the top of
+`README.md`. Everything else in this doc pack was run on a laptop first,
+commands transcribed as they were actually executed.
