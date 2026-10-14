@@ -1,0 +1,7 @@
+[tool.ruff.lint]
+# B008 flags FastAPI's own documented Depends()-as-default-argument idiom
+# (services/triage/auth.py's current_user, services/triage/app.py's
+# triage route). This is the correct pattern for FastAPI dependency
+# injection, not a bug -- ruff's own docs note this as a common project
+# override for FastAPI codebases.
+ignore = ["B008"]

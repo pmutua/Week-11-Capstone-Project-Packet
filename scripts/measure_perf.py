@@ -3,6 +3,7 @@
 import argparse
 import json
 import time
+import urllib.error
 import urllib.request
 
 
@@ -18,8 +19,8 @@ def main():
         start = time.perf_counter()
         try:
             urllib.request.urlopen(args.url, timeout=5)
-        except Exception:
-            pass
+        except (urllib.error.URLError, OSError, TimeoutError) as exc:
+            print(f"warn: call failed, timing it anyway: {exc}")
         samples.append(time.perf_counter() - start)
 
     samples.sort()
