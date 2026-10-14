@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+httpx
+pytest
+python-dotenv
+ruff
+bcrypt
+PyJWT
+mcp
+# model SDK: wire the one a live path needs (e.g. anthropic) behind LIVE_MODEL=1; none imported in stub mode
