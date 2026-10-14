@@ -23,6 +23,18 @@
   router"
 - `perf_stub.json`: a real measured p95 over 10 `/health` calls against
   the running service (laptop teaching stub, not a production SLA)
+- `docs/presentation.pdf`: a real 10-page PDF (`%PDF-1.4`, 10 `/Type
+  /Page` objects, verified by reading the file bytes) rendered from
+  `docs/presentation_outline.md` by `scripts/make_slides_pdf.py`
+- `.github/workflows/ci.yml` is real CI now, not illustrative --
+  `module4-capstone` is its own GitHub repository
+  (github.com/pmutua/Week-11-Capstone-Project-Packet), so pushes
+  actually trigger Actions. Running the bare commands CI uses (not
+  `python -m pytest`) surfaced a real bug: `pytest -q` failed with
+  `ModuleNotFoundError` on `services`/`agents` because nothing put the
+  repo root on `sys.path`. Fixed with `pytest.ini`'s `pythonpath = .`.
+  `ruff check .` also now passes clean (5 real findings fixed or
+  justified-ignored; see the `fix/rubric-compliance` PR)
 
 ## Incident note
 Running `scripts/diagnose_fixture.py` for the first time surfaced a real
@@ -42,10 +54,7 @@ T-002 break/restore drill, is in `fixtures/diagnosis_notes.txt`.
   stack, never a hosted model. No `LIVE_MODEL=1` code path exists yet, so
   the cost table in `docs/cost_analysis.md` is honestly $0 throughout, not
   the ~$1 Thursday-demo figure the generic lesson template assumes.
-- `module4-capstone/.github/workflows/ci.yml` is illustrative, the same
-  status as this repo's other per-week CI templates (e.g.
-  `week8_tuesday/.github/workflows/ci.yml`); the repo root has no real
-  `.github/workflows/` yet, so this file does not run automatically.
-- A real peer-reviewed PR from a second reviewer. This is a solo learner
-  project; `review_log.md` records an honest self-review against
-  `docs/peer_review_checklist.md` instead, per the lesson's own allowance.
+- A peer-reviewed PR from a *second* reviewer. This is a solo-learner
+  project with no second reviewer available; `review_log.md` records a
+  real, merged PR self-reviewed against `docs/peer_review_checklist.md`
+  instead, per the lesson's own allowance for solo cohorts.
