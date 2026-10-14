@@ -1,0 +1,22 @@
+Real transcript of `bash docs/demo_script.sh`, captured verbatim on
+2026-10-14 against a freshly started local instance (no edits below
+except trimming the shell job-control banner lines).
+
+INFO:     Started server process [21288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56297 - "GET /health HTTP/1.1" 200 OK
+{"service":"module4-capstone-triage","status":"ok","model_id":"stub-local-router-v1","prompt_version":"1.2.0","prompt_sha256":"0d096d0c5655667ff5e74db7250467c693f9dcb758fe115709acd471f224495c"}
+INFO:     127.0.0.1:56299 - "POST /token HTTP/1.1" 200 OK
+2026-10-14 14:21:18,603 tool=check_stock item=amoxicillin
+INFO:     127.0.0.1:56301 - "POST /triage HTTP/1.1" 200 OK
+{"status":"ok","intent":"logistics_lookup","answer":"Stock for amoxicillin: Kisumu Central Clinic=40, Vihiga Health Post=8, Kisii Family Clinic=75, Homa Bay Lakeside Clinic=0, Kisumu West Dispensary=22","grounded":false,"tool_called":"check_stock","model_id":"stub-local-router-v1","prompt_version":"1.2.0","handled_for":"mercy"}
+
+What this proves, line by line:
+- /health returns 200 with the pinned model_id/prompt_version/prompt_sha256
+- /token issues a real JWT for the demo user "mercy"
+- The logistics_mcp_versioned.py log line ("tool=check_stock item=amoxicillin")
+  shows the MCP tool function actually executed, not a mocked response
+- /triage returns validated JSON with a real five-clinic stock table,
+  tool_called="check_stock", and handled_for="mercy" (the authenticated user)
