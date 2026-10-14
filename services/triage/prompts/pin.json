@@ -1,0 +1,9 @@
+{
+  "model_id": "stub-local-router-v1",
+  "prompt_version": "1.2.0",
+  "prompt_path": "services/triage/prompts/triage_system_v1.2.0.txt",
+  "prompt_sha256": "0d096d0c5655667ff5e74db7250467c693f9dcb758fe115709acd471f224495c",
+  "corpus_path": "services/triage/knowledge/ors_faq.md",
+  "corpus_sha256": "bea0be6f29f87cd98d39cebcb2230a7a3bbcebd92a9f0dd8da6debddba50cb27",
+  "notes": "model_id is this project's deterministic offline router/RAG stack, not a hosted model. Wire a real provider id here (e.g. a Claude model) only behind a LIVE_MODEL=1 flag, never silently, and bump prompt_version/model_id together when either changes."
+}
