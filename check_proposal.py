@@ -12,11 +12,10 @@ def claims_million_rows(text: str) -> bool:
         ' ',
         low,
     )
-    if re.search(r'\bmillions?\s+(of\s+)?rows?\b', cleaned):
-        return True
-    if re.search(r'\b1[\s,]*000[\s,]*000\b', cleaned):
-        return True
-    return False
+    return bool(
+        re.search(r'\bmillions?\s+(of\s+)?rows?\b', cleaned)
+        or re.search(r'\b1[\s,]*000[\s,]*000\b', cleaned)
+    )
 
 
 def main() -> int:

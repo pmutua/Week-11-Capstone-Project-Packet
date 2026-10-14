@@ -6,5 +6,6 @@ python-dotenv
 ruff
 bcrypt
 PyJWT
-mcp
+mcp<2  # agents/tools/logistics_mcp_versioned.py imports mcp.server.fastmcp.FastMCP, renamed/removed in mcp 2.x
+matplotlib
 # model SDK: wire the one a live path needs (e.g. anthropic) behind LIVE_MODEL=1; none imported in stub mode
