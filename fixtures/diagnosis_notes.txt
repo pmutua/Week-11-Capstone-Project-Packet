@@ -1,0 +1,20 @@
+Tuesday Lab 2 diagnosis drill, run for real against the 300-row fixture.
+
+1. Real disagreement found on the first run (not synthetic): the starter
+   pack's scripts/make_fixture.py seeds a "where is my order" template
+   under the logistics_lookup label, but config.json's route_keywords for
+   logistics_lookup were only ["ship", "delivery", "logistics", "track"]
+   -- none of which appear in "where is my order". 28 of 300 rows
+   disagreed with the router for this reason.
+   Fix: added "order" to logistics_lookup's route_keywords (config.json),
+   a genuine router-coverage gap, not a fixture edit. Re-ran
+   scripts/diagnose_fixture.py: "diagnose OK, all rows agree with router".
+
+2. Deliberate drill (as instructed): changed T-002's label from
+   logistics_lookup to triage, ran
+   `pytest tests/unit/test_fixture_routes.py -q`, and watched
+   test_all_fixture_rows_agree_with_router fail with
+   `[('T-002', 'triage', 'logistics_lookup')]`. Regenerated the fixture
+   with scripts/make_fixture.py to restore the correct label; the test
+   suite returned to 16 passed. Did not delete or weaken the test to
+   silence the failure.
