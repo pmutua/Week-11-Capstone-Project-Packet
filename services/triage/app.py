@@ -18,7 +18,6 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import Optional
 
 from fastapi import Depends, FastAPI, HTTPException
 from pydantic import BaseModel, Field
@@ -27,12 +26,12 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from services.triage.auth import check_password, create_token, current_user
-from services.triage.rate_limit import check_rate_limit
-from services.triage.rag import grounded_answer
-from services.triage.redact import redact
 from agents.router import route
 from agents.tools import logistics
+from services.triage.auth import check_password, create_token, current_user
+from services.triage.rag import grounded_answer
+from services.triage.rate_limit import check_rate_limit
+from services.triage.redact import redact
 
 PIN_PATH = Path(__file__).resolve().parent / "prompts" / "pin.json"
 PIN = json.loads(PIN_PATH.read_text())
@@ -54,10 +53,10 @@ class TriageResponse(BaseModel):
     intent: str
     answer: str
     grounded: bool
-    tool_called: Optional[str] = None
+    tool_called: str | None = None
     model_id: str
     prompt_version: str
-    handled_for: Optional[str] = None
+    handled_for: str | None = None
 
 
 def handle_message(payload: dict, stub: bool = True) -> dict:

@@ -1,5 +1,6 @@
 """Change for your project: nothing. Point SERVICE_URL at your own endpoint if renamed."""
 import os
+
 import httpx
 import pytest
 

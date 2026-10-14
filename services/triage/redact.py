@@ -7,7 +7,7 @@ digits are not left recognisable after the ID pattern already matched.
 """
 import re
 
-BEARER = re.compile(r"Bearer\s+\S+", re.I)
+BEARER = re.compile(r"Bearer\s+\S+", re.IGNORECASE)
 KENYA_ID = re.compile(r"\b\d{8}\b")
 PHONE = re.compile(r"(?:\+254|0)7\d{8}\b")
 MPESA = re.compile(r"\b[A-Z][A-Z0-9]{9}\b")
